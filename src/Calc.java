@@ -110,16 +110,23 @@ public class Calc {
 		
 		String postFixChar = "";
 		
+		// Scan all characters
 		for(int i=0; i<postFix.length(); i++) {
 			
+			// Transform char to string
 			postFixChar = Character.toString(postFix.charAt(i));
 			
+			// Variables
 			double operand1 = 0.0;
 			double operand2 = 0.0;
 			double result = 0.0;
 			
+			// If character is an operand, push to the stack
 			if (getType(postFix.charAt(i)) == 1) {
 				calcList.push(Double.parseDouble(postFixChar));
+			// If character is an operator
+			// Get two top fields of the stack and calculate them by the operator
+			// Push result to stack
 			} else {
 				operand2 = calcList.getTop();
 				calcList.pop();
@@ -130,11 +137,13 @@ public class Calc {
 			}
 		}
 		
+		// Print result from the top of the stack
 		System.out.println(calcList.getTop());
 			
 	}
 	
 	private static double calculate(double operand1, double operand2, char operator) {
+		// Calculate the two operands by the operator
 		switch(operator) {
 		case '+':
 			System.out.println(operand1 + " + " + operand2);
